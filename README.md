@@ -4,19 +4,7 @@
 
 로봇이 멈추거나 예상과 다른 방향으로 움직였을 때, 센서 관측부터 최종 속도 명령까지 따라가며 원인을 좁히는 일을 해 왔습니다. ROS 2 기반 이동로봇의 주행·위치추정·시설 연동과 교육팀에서 담당한 작업 셀 통합을 정리했습니다.
 
-**Junyoung Gwak** · Robotics software engineering · ROS 2 · Navigation · Perception · Integration
-
-[![속도 명령과 모델 응답을 보여주는 합성 실험 그림](media/control-response.png)](labs/control-response.md)
-
-그림은 이 포트폴리오를 위해 만든 합성 예제입니다. [수식·입력·재현 방법](labs/control-response.md)
-
-**실행 가능한 실험**　[경로 탐색 영상과 A*·Dijkstra 비교](labs/path-search.md)　·　[속도 응답 모델](labs/control-response.md)　·　[박스 IoU와 포함 비율](labs/box-overlap.md)
-
-[미디어 출처와 실촬영본 추가 방법](media/README.md)
-
-[위치추정 · 같은 벽을 공유하는 두 후보의 잔차](labs/scan-evidence.md)　·　[시스템 통합 · 중복·지연 메시지 재생](labs/mission-replay.md)
-
-실험과 문서 링크는 Python 3.10·3.13에서 검사합니다. [GitHub Actions 실행 결과](https://github.com/Junyoung-Gwak/robotics-portfolio/actions/workflows/verify.yml)
+## 직무별 프로젝트
 
 | 관심 분야 | 먼저 읽을 사례 | 다룬 질문 |
 | --- | --- | --- |
@@ -32,11 +20,27 @@
 
 | 수행 시기 | 주요 작업 |
 | --- | --- |
-| 2026.11 | 사람 추종 우회 경로와 명령 선택, 층간 위치추정 복구 및 사전 검사 |
-| 2026.08–11 | 실외 순찰의 경유점 감속, 재접속 후 미션 상태, 승강기 승하차 연동 |
-| 2026.06–07 | 시뮬레이터 카메라와 ROS 입력 점검, 중장비 영상의 검출·추적 비교 |
-| 2026.01–03 | 레터링 로봇, 블록 조립 셀, 물류 디지털 트윈 팀 프로젝트 |
+| 2026.11 | [사람 추종 우회 경로와 명령 선택](projects/navigation.md), [층간 위치추정 복구 및 사전 검사](projects/localization.md) |
+| 2026.08–11 | 실외 순찰의 경유점 감속, 재접속 후 미션 상태, [승강기 승하차 연동](projects/integration.md) |
+| 2026.06–07 | 시뮬레이터 카메라와 ROS 입력 점검, [중장비 영상의 검출·추적 비교](projects/perception.md) |
+| 2026.01–03 | [레터링 로봇, 블록 조립 셀, 물류 디지털 트윈 팀 프로젝트](projects/robot-cells.md) |
 | 2022–23 | Gazebo 다기종 물류 팀 프로젝트 |
 | 2019–21 | 연구실의 중앙제어 주차, 다중 UAV 협업 프로젝트 |
 
 현장 사례는 장비·고객을 식별하는 세부 사항을 덜어내고 재현 조건과 기술 판단을 중심으로 정리했습니다. 팀 과제의 개인 담당은 당시 역할표를 기준으로 썼습니다. 문서와 설명 도해의 편집에는 Codex를 사용했습니다.
+
+## 직접 실행해 보는 알고리즘 실험
+
+[![합성 격자에서 같은 비용의 길을 찾는 Dijkstra와 A*](media/grid-search.png)](labs/path-search.md)
+
+같은 길이의 경로를 찾으면서 Dijkstra는 217칸, A*는 125칸을 확장했습니다. 그림을 열면 새로 제작한 **9초 합성 시뮬레이션**과 두 알고리즘에 공통으로 적용한 조건을 볼 수 있습니다.
+
+| 실험 | 재현할 수 있는 관찰 |
+| --- | --- |
+| [A*와 Dijkstra](labs/path-search.md) | 같은 격자에서 두 경로의 비용과 확장한 칸 수 |
+| [1차 속도 응답](labs/control-response.md) | 명령이 0이 된 뒤에도 모델 속도가 남는 구간 |
+| [박스 IoU와 포함 비율](labs/box-overlap.md) | 작은 박스가 완전히 포함돼도 IoU가 낮게 나오는 경우 |
+| [두 위치 후보의 잔차](labs/scan-evidence.md) | 공통 벽만 관측하면 두 후보 모두 일치율이 100%가 되는 경우 |
+| [승강기 메시지 재생](labs/mission-replay.md) | 이전 작업의 허가와 현재 작업의 중복 메시지가 도착한 뒤의 상태 |
+
+[Python 3.10·3.13 자동 시험 결과](https://github.com/Junyoung-Gwak/robotics-portfolio/actions/workflows/verify.yml) · [미디어 출처와 실촬영본 추가 방법](media/README.md)
