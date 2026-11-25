@@ -2,10 +2,21 @@ from datetime import date
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
-from tools.register_demo import START, END, register
+from tools.register_demo import START, END, destination, register, write_asset
 
 
 class DemoSlotTest(unittest.TestCase):
+    def test_recording_changed_after_preview_of_its_digest(self):
+        with TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "clip.mp4"
+            source.write_bytes(b"first version")
+            target, fingerprint = destination(root, "navigation", source, "recorded", date.today())
+            source.write_bytes(b"different version")
+            with self.assertRaisesRegex(OSError, "changed during copy"):
+                write_asset(source, target, fingerprint)
+            self.assertFalse(target.exists())
+
     def test_recording_is_copied_and_slot_replaced_idempotently(self):
         with TemporaryDirectory() as tmp:
             root=Path(tmp); (root/"projects").mkdir()

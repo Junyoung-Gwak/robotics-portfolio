@@ -27,21 +27,22 @@ def destination(root, case, source, kind, when, *, poster=False):
     if not source.is_file() or suffix not in (IMAGES if poster else MEDIA):
         raise ValueError("Choose an existing MP4 or supported image (poster must be an image)")
     folder = "recordings" if kind == "recorded" else "generated-demos"
-    slug = f"{case}-{when.isoformat()}-{'poster-' if poster else ''}{digest(source)[:12]}{suffix}"
-    return root / "media" / folder / slug
+    fingerprint = digest(source)
+    slug = f"{case}-{when.isoformat()}-{'poster-' if poster else ''}{fingerprint[:12]}{suffix}"
+    return root / "media" / folder / slug, fingerprint
 
 
-def write_asset(source, target):
+def write_asset(source, target, fingerprint):
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.exists():
-        if digest(source) != digest(target):
+        if digest(target) != fingerprint:
             raise ValueError(f"Existing asset has different contents: {target.name}")
         return
     with tempfile.NamedTemporaryFile(dir=target.parent, delete=False) as tmp:
         temporary = Path(tmp.name)
     try:
         copyfile(source, temporary)
-        if digest(temporary) != digest(source):
+        if digest(temporary) != fingerprint:
             raise OSError("Source changed during copy")
         os.replace(temporary, target)
     finally:
@@ -57,8 +58,10 @@ def register(root, case, source, *, kind, when, caption, poster=None, preview=Fa
     before = page.read_text("utf8")
     if before.count(START) != before.count(END) or before.count(START) > 1:
         raise ValueError("Project page has ambiguous demo markers")
-    target = destination(root, case, source, kind, when)
-    image = destination(root, case, poster, kind, when, poster=True) if poster else None
+    target, media_digest = destination(root, case, source, kind, when)
+    image = None
+    if poster:
+        image, poster_digest = destination(root, case, poster, kind, when, poster=True)
     caption = html.escape(caption.strip()).replace("\\", "\\\\").replace("[", "\\[").replace("]", "\\]")
     label = "직접 촬영한 영상·사진" if kind == "recorded" else "새로 제작한 설명용 미디어"
     rel = lambda p: "../" + p.relative_to(root).as_posix()
@@ -78,9 +81,9 @@ def register(root, case, source, *, kind, when, caption, poster=None, preview=Fa
         after = before.rstrip() + "\n\n" + block + "\n"
     if preview:
         return block
-    write_asset(source, target)
+    write_asset(source, target, media_digest)
     if poster:
-        write_asset(poster, image)
+        write_asset(poster, image, poster_digest)
     if before != after:
         with tempfile.NamedTemporaryFile(dir=page.parent, mode="w", encoding="utf8", newline="\n", delete=False) as f:
             f.write(after)
