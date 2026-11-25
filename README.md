@@ -4,6 +4,10 @@
 
 **Junyoung Gwak** · Robotics software engineering · ROS 2 · Navigation · Perception · Integration
 
+[![속도 명령과 모델 응답을 보여주는 합성 실험 그림](media/control-response.png)](labs/control-response.md)
+
+그림은 이 포트폴리오를 위해 만든 합성 예제입니다. [수식·입력·재현 방법](labs/control-response.md)
+
 | 관심 분야 | 먼저 읽을 사례 | 다룬 질문 |
 | --- | --- | --- |
 | 경로계획·주행제어 | [사람 추종과 순찰 제어](projects/navigation.md) | 화면에 보이는 경로와 실제 명령은 왜 달라졌나? |
