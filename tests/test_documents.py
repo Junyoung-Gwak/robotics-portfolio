@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class DocumentLinksTest(unittest.TestCase):
     def test_repository_links_resolve(self):
-        documents = [ROOT / "README.md"]
+        documents = sorted(ROOT.glob("README*.md"))
         for folder in ("projects", "labs", "media"):
             documents.extend(sorted((ROOT / folder).rglob("*.md")))
         for page in documents:

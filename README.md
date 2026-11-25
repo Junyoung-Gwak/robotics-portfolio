@@ -1,5 +1,7 @@
 # 곽준영 · 자율주행과 로봇 소프트웨어
 
+[English overview](README.en.md)
+
 로봇이 멈추거나 예상과 다른 방향으로 움직였을 때, 센서 관측부터 최종 속도 명령까지 따라가며 원인을 좁히는 일을 해 왔습니다. ROS 2 기반 이동로봇의 주행·위치추정·시설 연동과 교육팀에서 담당한 작업 셀 통합을 정리했습니다.
 
 **Junyoung Gwak** · Robotics software engineering · ROS 2 · Navigation · Perception · Integration
