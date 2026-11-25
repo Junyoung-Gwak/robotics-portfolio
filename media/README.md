@@ -4,6 +4,7 @@
 | --- | --- | --- |
 | [control-response.png](control-response.png) | 구간별 명령과 1차 모델의 속도 응답 | 합성 입력으로 새로 제작. 실제 주행 영상·로그 미사용 |
 | [grid-search.mp4](grid-search.mp4) · [GIF](grid-search.gif) · [정지 화면](grid-search.png) | 동일한 합성 격자의 Dijkstra·A* 확장 순서 | 새로 작성한 Python 탐색 결과에서 렌더링. 현장 촬영본과 별도 |
+| [box-overlap.png](box-overlap.png) | 포함·교차·분리 상황의 두 가지 겹침 지표 | 예제 좌표를 직접 정의해 새로 제작. 검출 영상 미사용 |
 
 ## 실측 자료를 추가할 때
 
