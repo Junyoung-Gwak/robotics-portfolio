@@ -14,7 +14,7 @@
 
 [미디어 출처와 실촬영본 추가 방법](media/README.md)
 
-[위치추정 실험 · 같은 벽을 공유하는 두 후보의 일치율과 잔차](labs/scan-evidence.md)
+[위치추정 · 같은 벽을 공유하는 두 후보의 잔차](labs/scan-evidence.md)　·　[시스템 통합 · 중복·지연 메시지 재생](labs/mission-replay.md)
 
 실험과 문서 링크는 Python 3.10·3.13에서 검사합니다. [GitHub Actions 실행 결과](https://github.com/Junyoung-Gwak/robotics-portfolio/actions/workflows/verify.yml)
 

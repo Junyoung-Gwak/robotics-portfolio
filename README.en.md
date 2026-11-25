@@ -22,6 +22,7 @@ I work on mobile robots that follow people, patrol between waypoints and coordin
 | When can floor hypotheses tie? | [Nearest-neighbor scan scoring](labs/scan-evidence.md) | If the scan contains only the shared wall, both candidates explain all eight points. |
 | Why can a contained detection have low IoU? | [Box geometry](labs/box-overlap.md) | A small box entirely inside a large one can have full containment and small intersection over union. |
 | Why can speed remain positive after a zero command? | [First-order speed model](labs/control-response.md) | With a finite time constant, model speed decays over time after a step down to zero. |
+| Can a duplicate facility permission complete a robot mission? | [Event replay](labs/mission-replay.md) | Only one of the 256 four-event sequences completes the synthetic handoff. |
 
 The examples and illustrations were created specifically for this portfolio using synthetic inputs. Project dates above refer to the original work. Run the examples with Python 3.10 or later from the repository root. No robot hardware is required.
 
