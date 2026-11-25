@@ -8,6 +8,8 @@
 
 그림은 이 포트폴리오를 위해 만든 합성 예제입니다. [수식·입력·재현 방법](labs/control-response.md)
 
+**실행 가능한 실험**　[경로 탐색 영상과 A*·Dijkstra 비교](labs/path-search.md)　·　[속도 응답 모델](labs/control-response.md)　·　[미디어 출처와 실촬영본 추가 방법](media/README.md)
+
 | 관심 분야 | 먼저 읽을 사례 | 다룬 질문 |
 | --- | --- | --- |
 | 경로계획·주행제어 | [사람 추종과 순찰 제어](projects/navigation.md) | 화면에 보이는 경로와 실제 명령은 왜 달라졌나? |
