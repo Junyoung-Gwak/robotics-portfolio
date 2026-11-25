@@ -12,6 +12,8 @@
 
 [미디어 출처와 실촬영본 추가 방법](media/README.md)
 
+실험과 문서 링크는 Python 3.10·3.13에서 검사합니다. [GitHub Actions 실행 결과](https://github.com/Junyoung-Gwak/robotics-portfolio/actions/workflows/verify.yml)
+
 | 관심 분야 | 먼저 읽을 사례 | 다룬 질문 |
 | --- | --- | --- |
 | 경로계획·주행제어 | [사람 추종과 순찰 제어](projects/navigation.md) | 화면에 보이는 경로와 실제 명령은 왜 달라졌나? |
